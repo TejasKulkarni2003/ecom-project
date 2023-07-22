@@ -1,0 +1,11 @@
+export const ALL_PROD_SUCCESS = "ALL_PROD_SUCCESS";
+export const ALL_PROD_FAIL = "ALL_PROD_FAIL";
+export const ALL_PROD_REQUEST = "ALL_PROD_REQUEST";
+
+export const PRODUCT_DETAILS_SUCCESS = "PRODUCT_DETAILS_SUCCESS";
+export const PRODUCT_DETAILS_FAIL = "PRODUCT_DETAILS_FAIL";
+export const PRODUCT_DETAILS_REQUEST = "PRODUCT_DETAILS_REQUEST";
+
+
+export const ClearErrors = "ClearErrors";
+
