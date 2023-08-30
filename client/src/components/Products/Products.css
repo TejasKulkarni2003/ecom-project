@@ -67,3 +67,8 @@
     transform: translateY(-2rem);
     /* transform: scale(1.2); */
   }
+
+  .page{
+    display: flex;
+    justify-content: center;
+  }

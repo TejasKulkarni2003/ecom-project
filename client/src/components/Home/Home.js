@@ -62,7 +62,6 @@ const Home = () => {
                 </div>
 
                 <h2 className='homeHeading'>Top Products</h2>
-
                 <div className='container' id='container'>
                     
                     {products &&  products.map((product)=>

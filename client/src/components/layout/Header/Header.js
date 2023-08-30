@@ -37,6 +37,7 @@ const Header = () => {
   return (
     <>
         <Button pos={"fixed"} top={'4'} left={'4'} colorScheme="purple" p={'0'} w = {'10'} h={'10'} borderRadius={'50'}
+        style={{border: "2px solid white"}}
         onClick={onOpen} zIndex={'10'}>
             <BiMenuAltLeft size={'20'} />
         </Button>
@@ -60,7 +61,7 @@ const Header = () => {
                             <Link to={'/'}>Home</Link>
                         </Button>
                         <Button onClick={onClose} variant={'ghost'} colorScheme={'purple'}>
-                            <Link to={'/products'}>Product</Link>
+                            <Link to={'/products'}>Products</Link>
                         </Button>
                         <Button onClick={onClose} variant={'ghost'} colorScheme={'purple'}>
                             <Link to={'/contact'}>Contact</Link>

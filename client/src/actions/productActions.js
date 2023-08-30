@@ -4,14 +4,19 @@ import { ALL_PROD_FAIL, ALL_PROD_REQUEST, ALL_PROD_SUCCESS,
          ClearErrors } from "../constants/productConstants";
 
 
-export const getProduct = (keyword="") => async (dispatch) =>{
+export const getProduct = (keyword="", currentPage=1, min=0, max=50000, category, ratings=0) => async (dispatch) =>{
     try {
         dispatch({
             type: ALL_PROD_REQUEST,
         })
 
-        const {data} = await axios.get(`/api/v1/products?keyword=${keyword}`);
-        console.log(data);
+        let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${min}&price[lte]=${max}&ratings[gte]=${ratings}`;
+        if(category){
+            link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${min}&price[lte]=${max}&category=${category}&ratings[gte]=${ratings}`
+        }
+        const {data} = await axios.get(link);
+        // console.log(currentPage);
+        // console.log(data);
         dispatch({
             type: ALL_PROD_SUCCESS,
             payload: data,

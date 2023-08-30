@@ -19,7 +19,7 @@ const Product = ({product}) => {
   return (
     
     <div className="productCard">
-    {console.log(product)}
+    {/* {console.log(product)} */}
     <Link  to={`/product/${product._id}`}>
         <img src={product.images[0].url} alt={product.name}/>
         <p>{product.name}</p>

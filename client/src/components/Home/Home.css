@@ -71,13 +71,16 @@
     /* flex-direction: column; */
     margin: 2rem 3rem;
     width: auto;
+    height: fit-content;
     flex-wrap: wrap;
     justify-content: center;
+    overflow-y:scroll;
 }
 
 
 .productCard{
     width: 15rem;
+    height: auto;
     border-style: solid;
     border-width: 2px;
     /* background: rgb(144, 44, 44); */
@@ -120,9 +123,66 @@
     font-weight: 400;
     text-align: center;
 }
+@media screen and (min-width: 480px) {
+    .productCard:hover {
+        box-shadow: 0 1rem 5rem rgba(255, 255, 255, 0.26);
+        transform: translateY(-2rem);
+        /* transform: scale(1.2); */
+    }
+}
 
-.productCard:hover {
-    box-shadow: 0 1rem 5rem rgba(255, 255, 255, 0.26);
-    transform: translateY(-2rem);
-    /* transform: scale(1.2); */
-  }
+@media screen and (max-width: 480px) {
+    .banner .typeAnnimation{
+        font-size: 2rem;
+        color: rgb(6, 5, 4);
+    }
+    .banner h1{
+        margin: 1rem;
+        font: 500 1.5rem "Lucida sans";
+    }
+    
+    .banner p{
+        font: 900 0.5rem "Victor Mono"
+    }
+
+    .banner > a > button {
+        
+        font: 500 1rem "Roboto";
+
+    }
+
+    .productCard:hover {
+        box-shadow: 0 1rem 5rem rgba(255, 255, 255, 0.26);
+        /* transform: scale(1.5); */
+        transform: scale(1.2);
+        transform: translateY(0);
+      }
+    
+}
+
+/* @media screen and (min-width: 700px) {
+    .product_stack{
+        padding: 8rem;
+        height: 5/0vh;
+        justify-content: center;
+        display: flex; */ 
+        /* direction: row; */
+        /* line-height: 2.2rem;
+    }
+    .carouselImages {
+      width: 20.5rem;
+    }
+    .productDetailsBox{
+        padding: 1rem 0rem 0 3rem;
+        /* line-height: 2rem;
+    }
+    
+    .productDetailsBox h1{
+        padding: 0.5rem 0rem;
+        font-size: 2rem;
+    }
+    
+    .productDetailsBox h4{
+        font-size: 0.8rem;
+    }
+} */

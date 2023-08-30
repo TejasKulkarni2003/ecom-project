@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Products.css";
 import { useDispatch, useSelector } from "react-redux"
 import { clearErrors, getProduct } from '../../actions/productActions.js';
@@ -7,17 +7,67 @@ import Product from "../Home/Product";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useParams} from "react-router-dom";
+import Pagination from "react-js-pagination";
+import {
+    RangeSlider,
+    RangeSliderTrack,
+    RangeSliderFilledTrack,
+    RangeSliderThumb,
+    Button,
+    HStack,
+    Heading,
+    Slider,
+    SliderTrack,
+    SliderThumb,
+    SliderFilledTrack,
+    SliderMark,
+    Tooltip,
+    Box,
+} from '@chakra-ui/react'
 
 const Products = () => {
     const dispatch = useDispatch();
-    const {products, loading, error, productsCount} = useSelector((state)=>state.products)
-
+    const {products, loading, error, productsCount, resultPerPage, filteredProducts} = useSelector((state)=>state.products)
+    const [currentPage, setCurrentPage] = useState(1);
+    const [min, setPriceMin] = useState(0);
+    const [max, setPriceMax] = useState(50000);
     const {keyword} = useParams(); 
-    console.log(keyword);
+    // console.log(keyword);
+
+    let tmpFilteredCount = Number(filteredProducts);
+    let prodOnAPage = Number(resultPerPage);
+    // console.log(tmpFilteredCount);
+    // console.log(resultPerPage);
+
+    const [pages, setpages] = useState(1);
+    const [category, setCategory] = useState("");
+    const [ratings, setratings] = useState(0);
+    const [showTooltip, setShowTooltip] = useState(false);
+    const [showTooltip2, setShowTooltip2] = useState(false);
+
+    const categories = ["laptop", "fashion", "Mobile", "camera"];
+    const nextPage = (e) => {
+        setCurrentPage((currentPage+1));
+    };
+    const prevPage = (e) => {
+        setCurrentPage((currentPage-1));
+    };
+
+
+    const range = (priceRange) =>{
+        
+        setPriceMin(priceRange[0]);
+        // console.log(min);
+        setPriceMax(priceRange[1]);
+        // console.log(max);
+
+    }
 
     useEffect(() => {
         if(error){
-            return toast.error(error, {
+            const err = error;
+            dispatch(clearErrors());
+            return toast.error(err, {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -27,9 +77,12 @@ const Products = () => {
                 progress: undefined,
                 theme: "light",
             });
+            // dispatch(clearErrors());
         }
-        dispatch(getProduct(keyword))
-    }, [dispatch, error, keyword])
+        dispatch(getProduct(keyword, currentPage, min, max, category, ratings))
+
+        setpages(currentPage*resultPerPage);
+    }, [dispatch, error, keyword, currentPage, min, max, category, ratings])
 
 
 
@@ -43,6 +96,78 @@ const Products = () => {
                         <Product key={item._id} product={item} />
                     )}
                 </div>
+               
+                <HStack w={'full'} className={'page'}>
+                    
+                        <Button isDisabled={currentPage===1} onClick={prevPage}>Prev</Button>
+                        <Button isDisabled={pages>=filteredProducts} onClick={nextPage}>Next</Button>
+                    
+                </HStack>
+                
+                <RangeSlider defaultValue={[min, max]} min={0} max={100000} step={500} onChangeEnd={range}
+                    onMouseEnter={() => setShowTooltip(true)}
+                    onMouseLeave={() => setShowTooltip(false)}
+                >
+                    <RangeSliderTrack bg='red.100'>
+                        <RangeSliderFilledTrack bg='tomato' />
+                    </RangeSliderTrack>
+                    <Tooltip
+                        hasArrow
+                        bg='teal.500'
+                        color='white'
+                        placement='top'
+                        isOpen={showTooltip}
+                        label={`${min}`}
+                    >
+                        <RangeSliderThumb boxSize={6} index={0} />
+                    </Tooltip>
+                    
+                    <Tooltip
+                        hasArrow
+                        bg='teal.500'
+                        color='white'
+                        placement='top'
+                        isOpen={showTooltip}
+                        label={`${max}`}
+                    >
+                        <RangeSliderThumb boxSize={6} index={1} />
+                    </Tooltip>
+                </RangeSlider>
+
+
+                <Heading>Categories</Heading>
+                <ul className='categoryBox'>{
+                    categories.map((category) => (
+                        <li className='category-link' key={category} onClick={()=>setCategory(category)}>
+                            {category}
+                        </li>
+                    ))
+                }</ul>
+
+
+                {/* <Box pt={6} pb={2}> */}
+                <Slider defaultValue={ratings} min={0} max={5} step={1} onChangeEnd={(val)=>setratings(val)}
+                    onMouseEnter={() => setShowTooltip2(true)}
+                    onMouseLeave={() => setShowTooltip2(false)}
+                >
+                <SliderTrack bg='red.100'>
+                    <Box position='relative' right={10} />
+                    <SliderFilledTrack bg='tomato' />
+                    <Tooltip
+                        hasArrow
+                        bg='teal.500'
+                        color='white'
+                        placement='top'
+                        isOpen={showTooltip2}
+                        label={`${ratings}*`}
+                    >
+                        <SliderThumb />
+                    </Tooltip>
+                </SliderTrack>
+                <SliderThumb boxSize={6} />
+                </Slider>
+                {/* </Box> */}
+              
             </>
         )}
     </>
