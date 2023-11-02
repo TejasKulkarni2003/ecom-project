@@ -28,7 +28,7 @@ const UserMenu = ({user}) => {
         navigate("/orders")
     }
     function profile() {
-        navigate("/account")
+        navigate("/profile")
     }
 
     function logOut() {

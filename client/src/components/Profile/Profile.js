@@ -48,8 +48,15 @@ const Profile = () => {
                             <Heading className='t2'>{user.email}</Heading>
                         </div>
                         
-                        <div>
-                            
+                        <div className='btn'>
+                        <Link to= "/profile/update">
+                            <Button backgroundColor={'#635dc0'} marginTop={'1rem'} padding={'0.8rem'}>My Orders</Button>
+                        </Link>
+                        </div>
+                        <div className='btn'>
+                        <Link to= "/profile/changepassword">
+                            <Button backgroundColor={'#635dc0'} marginTop={'1rem'} padding={'0.8rem'}>Change Password</Button>
+                        </Link>
                         </div>
                     </Box>
                     

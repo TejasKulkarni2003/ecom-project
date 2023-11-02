@@ -90,8 +90,8 @@ const Products = () => {
     <>
         {loading ? (<div className='loader'></div>) : (
             <>
-                <h2 className='productHeading'>Product Heading</h2>
-                <div className='container'>
+                <h2 className='productHeading'>Products</h2>
+                <div className='containertt' >
                     {products  &&  products.map((item)=>
                         <Product key={item._id} product={item} />
                     )}

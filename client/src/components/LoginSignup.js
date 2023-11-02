@@ -1,16 +1,16 @@
 import React, {useRef, useState, useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { toast } from 'react-toastify';
-import {useParams, Link, useNavigate} from "react-router-dom";
+import {useParams, Link, useNavigate, useLocation} from "react-router-dom";
 import { Button } from "@chakra-ui/react";
 import {Mail, KeyRound, User} from "lucide-react";
 import {clearErrors, login, register} from "../actions/userActions";
 import "./LoginSignup.css"
 
- 
 const LoginSignup = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
+    const location = useLocation()
     const {error, loading, isAuthenticated} = useSelector(state => state.user);
     const loginTab = useRef(null);
     const registerTab = useRef(null);
@@ -30,6 +30,7 @@ const LoginSignup = () => {
     const [isActive2, setisActive2] = useState(false);
 
     const {name, email, password} = user;
+    const redirect = location.search ? location.search.split("=")[1] : "profile"
 
     const loginSubmit = (e) => {
         e.preventDefault();
@@ -55,7 +56,7 @@ const LoginSignup = () => {
         }
 
         if(isAuthenticated){
-            navigate("/profile");
+            navigate(`/${redirect}`);
         }
     }, [dispatch, error, isAuthenticated])
 
@@ -119,8 +120,8 @@ const LoginSignup = () => {
 
   return (
     <>
-        {/* {loading? (<div className='loader'></div>):
-        ( */}
+        {loading? (<div className='loader'></div>):
+        (
             <>
             <div className='container'>
                 <div className='box'>
@@ -215,7 +216,7 @@ const LoginSignup = () => {
             </div>
                 
             </>
-        {/* )} */}
+        )}
     </>
   )
 }

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './ProductDetails.css';
 import {useSelector, useDispatch} from 'react-redux'
 import { getProductDetails } from '../../actions/productActions';
@@ -7,7 +7,8 @@ import { Box, Image, Heading, Stack, HStack, Button, Input } from '@chakra-ui/re
 import {Carousel} from 'react-responsive-carousel'
 import ReactStars from "react-rating-stars-component";
 import ReviewCard from "./ReviewCard";
-
+import {addToCart} from "../../actions/cartActions"
+import { toast } from 'react-toastify';
 
 const ProductDetails = () => {
 
@@ -29,6 +30,35 @@ const ProductDetails = () => {
         isHalf: true,
         size: window.innerWidth<600? 15 : 20,
     }
+
+    const [quantity, setQuantity] = useState(1);
+     const increaseQuantity = () => {
+      if(product.Stock <= quantity){
+        return;
+      }
+      setQuantity(quantity+1);
+     }
+
+     const decreaseQuantity = () => {
+      if(quantity <= 1){
+        return;
+      }
+      setQuantity(quantity-1);
+     }
+
+     const addToCartHandler = () => {
+      dispatch(addToCart(id, quantity));
+      toast.success("Item Added To Cart", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
+     }
 
   return (
     <>
@@ -58,11 +88,11 @@ const ProductDetails = () => {
             </Box>
             <HStack >
                 <HStack padding= {'0.5rem 0 0.2rem 0'} gap={'0'} alignItems={'center'}>
-                <Button borderRadius={'0.8rem 0 0 0.8rem'} fontSize= "1.2rem">-</Button>
-                <Input value={1} type='number' w={'4rem'} borderRadius={'0'} textAlign={'center'}></Input>
-                <Button borderRadius={'0 0.8rem 0.8rem 0'} fontSize= "1.2rem">+</Button>
+                <Button borderRadius={'0.8rem 0 0 0.8rem'} fontSize= "1.2rem" onClick={decreaseQuantity}>-</Button>
+                <Input readOnly value={quantity} type='number' w={'4rem'} borderRadius={'0'} textAlign={'center'}></Input>
+                <Button borderRadius={'0 0.8rem 0.8rem 0'} fontSize= "1.2rem" onClick={increaseQuantity}>+</Button>
                 </HStack>
-                <Button fontSize= "0.7rem" padding="0.1rem 1rem" backgroundColor={'#635dc0'} >Add to Cart</Button>
+                <Button fontSize= "0.7rem" padding="0.1rem 1rem" backgroundColor={'#635dc0'} onClick={addToCartHandler}>Add to Cart</Button>
             </HStack> 
             <p style={{lineHeight:'2rem', fontWeight: '800', borderBottom:'1px solid', borderTop:'1px solid', textAlign: 'center', margin:'0.8rem 0'}}>
                 Status:

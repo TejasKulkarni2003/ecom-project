@@ -28,6 +28,10 @@
     font-size: 1.5rem;
 }
 
+.details .btn button{
+    width: 100%;
+}
+
 @media screen and (max-width: 450px) {
     *{
         margin-top: 5rem;
@@ -51,6 +55,10 @@
     }
     .details .t2{
         font-size: 1rem;
+    }
+
+    .details .btn button{
+        width: 10rem;
     }
 
 }
