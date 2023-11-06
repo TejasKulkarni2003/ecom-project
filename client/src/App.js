@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import ReactDOM from 'react-dom/client';
 import Header from "./components/layout/Header/Header.js"
 import Footer from "./components/layout/Header/Footer.js"
 import Home from "./components/Home/Home"
@@ -12,7 +11,7 @@ import WebFont from "webfontloader";
 import "./App.css"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {BrowserRouter as Router, Routes, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import store from "./store";
 import {loadUser} from "./actions/userActions";
 import {useSelector} from 'react-redux';

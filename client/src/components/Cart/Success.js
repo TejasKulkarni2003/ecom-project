@@ -2,7 +2,7 @@ import React from 'react'
 import { CheckCircle } from "lucide-react"
 import "./Success.css"
 import { Button } from '@chakra-ui/react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Success = () => {
     const navigate = useNavigate()

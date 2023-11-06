@@ -1,13 +1,12 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { saveShippingInfo } from '../../actions/cartActions'
 import { useDispatch, useSelector } from 'react-redux'
-import {Link} from '@chakra-ui/react'
 import {Country, State} from "country-state-city"
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./Shipping.css"
-import {Compass, Locate, Mailbox, MapPin, Phone, Stamp, TreePine} from "lucide-react"
+import { Locate, Mailbox, MapPin, Phone, Stamp} from "lucide-react"
 import Example from "./checkoutSteps.js"
 
 const Shipping = () => {

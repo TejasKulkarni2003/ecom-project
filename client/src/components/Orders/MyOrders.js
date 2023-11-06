@@ -2,7 +2,6 @@ import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {clearErrors, myOrders} from "../../actions/orderActions"
 import { Link } from "react-router-dom"
-import {} from "lucide-react"
 import "./MyOrders.css"
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,7 +9,6 @@ import {
     Table,
     Thead,
     Tbody,
-    Tfoot,
     Tr,
     Th,
     Td,
@@ -58,7 +56,7 @@ const MyOrders = () => {
             <Table variant='simple' style ={style} >
             <TableCaption>Orders of <h2>{user.name}</h2></TableCaption>
                 <Thead>
-                <Tr classname="row">
+                <Tr className="row">
                     <Th>Order</Th>
                     <Th isNumeric>Quantity</Th>
                     <Th isNumeric>Cost</Th>

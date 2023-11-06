@@ -1,7 +1,7 @@
 import React, {useRef, useState, useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { toast } from 'react-toastify';
-import {useParams, Link, useNavigate, useLocation} from "react-router-dom";
+import { Link, useNavigate, useLocation} from "react-router-dom";
 import { Button } from "@chakra-ui/react";
 import {Mail, KeyRound, User} from "lucide-react";
 import {clearErrors, login, register} from "../actions/userActions";
@@ -58,10 +58,10 @@ const LoginSignup = () => {
         if(isAuthenticated){
             navigate(`/${redirect}`);
         }
-    }, [dispatch, error, isAuthenticated])
+    }, [dispatch, error, isAuthenticated, navigate, redirect])
 
     const switchForm = (e, tab) =>{
-        if(tab == "login"){
+        if(tab === "login"){
             switcher.current.classList.add("shiftToNeutral");
             switcher.current.classList.remove("shiftToRight");
 
@@ -73,7 +73,7 @@ const LoginSignup = () => {
             setisActive1 (true);
             setisActive2 (false);
         }
-        if(tab == "register"){
+        if(tab === "register"){
             switcher.current.classList.remove("shiftToNeutral");
             switcher.current.classList.add("shiftToRight");
 

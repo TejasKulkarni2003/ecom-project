@@ -1,26 +1,46 @@
 import React, {useEffect, useState} from 'react';
 import './ProductDetails.css';
 import {useSelector, useDispatch} from 'react-redux'
-import { getProductDetails } from '../../actions/productActions';
+import { clearErrors, getProductDetails, newReview } from '../../actions/productActions';
 import {useParams} from 'react-router-dom'
-import { Box, Image, Heading, Stack, HStack, Button, Input } from '@chakra-ui/react'
+import { Box, Heading, Stack, HStack, Button, Input } from '@chakra-ui/react'
 import {Carousel} from 'react-responsive-carousel'
 import ReactStars from "react-rating-stars-component";
 import ReviewCard from "./ReviewCard";
 import {addToCart} from "../../actions/cartActions"
 import { toast } from 'react-toastify';
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  FormControl,
+  FormLabel,
+} from "@chakra-ui/react"
+import { NEW_REVIEW_RESET } from '../../constants/productConstants';
 
 const ProductDetails = () => {
 
     const dispatch = useDispatch();
     const {id} = useParams();
     const { product, loading, error } = useSelector(
-        (state) => state.productDetails
-      );
+      (state) => state.productDetails
+    );
+
+    const {success, error: reviewError} = useSelector((state)=> state.newReview)
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const initialRef = React.useRef()
+    const finalRef = React.useRef()
+
+    const [rating, setrating] = useState(0)
+    const [comment, setcomment] = useState("")
     // console.log(/);
-    useEffect(() => {
-        dispatch(getProductDetails(id))
-    }, [dispatch, id])
+    
 
     const options = {
         edit: false,
@@ -30,6 +50,15 @@ const ProductDetails = () => {
         isHalf: true,
         size: window.innerWidth<600? 15 : 20,
     }
+
+    const options1 = {
+      edit: true,
+      color: "grey",
+      activeColor: "tomato",
+      value: rating,
+      isHalf: true,
+      size: window.innerWidth<600? 15 : 20,
+  }
 
     const [quantity, setQuantity] = useState(1);
      const increaseQuantity = () => {
@@ -46,19 +75,75 @@ const ProductDetails = () => {
       setQuantity(quantity-1);
      }
 
-     const addToCartHandler = () => {
-      dispatch(addToCart(id, quantity));
-      toast.success("Item Added To Cart", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-    });
-     }
+    const addToCartHandler = () => {
+        dispatch(addToCart(id, quantity));
+        toast.success("Item Added To Cart", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+      });
+    }
+
+    const reviewSubmit = () => {
+      const myForm = new FormData()
+      myForm.set("rating", rating)
+      myForm.set("comment", comment)
+      myForm.set("productID", id)
+      dispatch(newReview(myForm))
+      onClose()
+    }
+
+    useEffect(() => {
+      if(error){
+        const err = error
+        dispatch(clearErrors)
+        toast.error(err, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+      }
+
+      if(reviewError){
+        const err = reviewError
+        dispatch(clearErrors)
+        toast.error(err, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+      }
+
+      if(success){
+        dispatch({type: NEW_REVIEW_RESET})
+        toast.success("Review Submitted successfully", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+      }
+      dispatch(getProductDetails(id))
+    }, [dispatch, id, error, reviewError, success])
 
   return (
     <>
@@ -102,7 +187,39 @@ const ProductDetails = () => {
             </p>
             
             <p >{`Description : ${product.description}`}</p>
-            <Button fontSize= "0.7rem" padding="0.1rem 1rem" backgroundColor={'#635dc0'} top={'1rem'} >Submit Reviews</Button>
+            <Button fontSize= "0.7rem" padding="0.1rem 1rem" backgroundColor={'#635dc0'} top={'1rem'} onClick={onOpen}>Submit Reviews</Button>
+            <Modal
+              initialFocusRef={initialRef}
+              finalFocusRef={finalRef}
+              isOpen={isOpen}
+              onClose={onClose}
+              blockScrollOnMount={false}>
+              <ModalOverlay />
+              <ModalContent>
+                <ModalHeader>Submit Your Review</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody pb={6}>
+                  
+                  <FormControl>
+                    <FormLabel>Rating - </FormLabel>
+                    <ReactStars {...options1} onChange={(e)=>setrating(e)}/> 
+                  </FormControl>
+
+                  <FormControl>
+                    <FormLabel>Review</FormLabel>
+                    <Input ref={initialRef} placeholder="First name" value={comment} onChange={(e)=>setcomment(e.target.value)}/>
+                  </FormControl>
+                  
+                </ModalBody>
+
+                <ModalFooter>
+                  <Button colorScheme="blue" mr={3} onClick={reviewSubmit}>
+                    Submit
+                  </Button>
+                  <Button onClick={onClose}>Cancel</Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
         </Box>
         
         </Stack>

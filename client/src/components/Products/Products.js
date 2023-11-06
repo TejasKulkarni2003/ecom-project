@@ -7,7 +7,6 @@ import Product from "../Home/Product";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useParams} from "react-router-dom";
-import Pagination from "react-js-pagination";
 import {
     RangeSlider,
     RangeSliderTrack,
@@ -20,22 +19,21 @@ import {
     SliderTrack,
     SliderThumb,
     SliderFilledTrack,
-    SliderMark,
     Tooltip,
     Box,
 } from '@chakra-ui/react'
 
 const Products = () => {
     const dispatch = useDispatch();
-    const {products, loading, error, productsCount, resultPerPage, filteredProducts} = useSelector((state)=>state.products)
+    const {products, loading, error,  resultPerPage, filteredProducts} = useSelector((state)=>state.products)
     const [currentPage, setCurrentPage] = useState(1);
     const [min, setPriceMin] = useState(0);
     const [max, setPriceMax] = useState(50000);
     const {keyword} = useParams(); 
     // console.log(keyword);
 
-    let tmpFilteredCount = Number(filteredProducts);
-    let prodOnAPage = Number(resultPerPage);
+    // let tmpFilteredCount = Number(filteredProducts);
+    // let prodOnAPage = Number(resultPerPage);
     // console.log(tmpFilteredCount);
     // console.log(resultPerPage);
 

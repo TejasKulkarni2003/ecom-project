@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { toast } from 'react-toastify';
-import {useParams, Link, useNavigate} from "react-router-dom";
-import { Button } from "@chakra-ui/react";
+import { useNavigate} from "react-router-dom";
 import {Mail, User} from "lucide-react";
 import {clearErrors, loadUser, updateProfile} from "../../actions/userActions";
 import "./UpdateProfile.css"
@@ -63,7 +62,7 @@ const UpdateProfile = () => {
                 type: UPDATE_PROFILE_RESET
             })
         }
-    }, [dispatch, error, user, isUpdated ])
+    }, [dispatch, error, user, isUpdated, navigate ])
 
     const updateProfileSubmit = (e) => {
         e.preventDefault();

@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { toast } from 'react-toastify';
-import {useParams, Link, useNavigate} from "react-router-dom";
-import { Button } from "@chakra-ui/react";
+import { useNavigate} from "react-router-dom";
 import {KeyRound, Unlock, Lock} from "lucide-react";
 import {clearErrors, updatePassword} from "../../actions/userActions";
 import "./UpdatePassword.css"
@@ -53,7 +52,7 @@ const UpdatePassword = () => {
                 type: UPDATE_PASSWORD_RESET,
             })
         }
-    }, [dispatch, error, isUpdated ])
+    }, [dispatch, error, isUpdated, navigate ])
 
     const updatePasswordSubmit = (e) => {
         e.preventDefault();

@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import "./profile.css"
 import { useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
-import { Navigate, useNavigate } from 'react-router-dom'
-import {Box, Button, Heading, Image, Stack} from "@chakra-ui/react"
+import { useNavigate } from 'react-router-dom'
+import {Box, Button, Heading, Image} from "@chakra-ui/react"
 
 const Profile = () => {
     const navigate = useNavigate();

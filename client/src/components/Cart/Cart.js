@@ -1,12 +1,11 @@
 import React from 'react'
 import "./Cart.css"
 import CartItem from "./CartItem.js"
-import {  useDispatch, useSelector } from 'react-redux'
+import {  useSelector } from 'react-redux'
 import { Button } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
-    const dispatch = useDispatch();
     const {cartItems} = useSelector((state) => state.cart)
     const navigate = useNavigate();
 
