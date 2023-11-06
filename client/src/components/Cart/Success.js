@@ -11,7 +11,7 @@ const Success = () => {
         <div className='successContainer'>
             <div className='sicon'><CheckCircle className='tmp'/></div>
             <div><h2>Order Placed Successfully</h2></div>
-            <Button className='successbtn' onClick={()=>navigate("/orders/me")}>View Details</Button>
+            <Button className='successbtn' onClick={()=>navigate("/orders")}>View Details</Button>
 
         </div>
     </>
