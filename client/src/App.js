@@ -12,7 +12,7 @@ import WebFont from "webfontloader";
 import "./App.css"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route, Switch} from "react-router-dom";
 import store from "./store";
 import {loadUser} from "./actions/userActions";
 import {useSelector} from 'react-redux';
@@ -24,6 +24,8 @@ import Shipping from './components/Cart/Shipping.js';
 import ConfirmOrder from './components/Cart/ConfirmOrder.js';
 import Payment from './components/Cart/Payment.js';
 import Success from './components/Cart/Success.js';
+import MyOrders from './components/Orders/MyOrders.js';
+import OrderDetails from './components/Orders/OrderDetails.js';
 import {Elements} from "@stripe/react-stripe-js"
 import {loadStripe} from "@stripe/stripe-js"
 
@@ -67,9 +69,11 @@ function App() {
         {isAuthenticated && <Route path="/shipping" element = {<Shipping/>}/>}
         {isAuthenticated && <Route path="/order/confirm" element = {<ConfirmOrder/>}/>}
         {isAuthenticated && <Route path="/order/success" element = {<Success/>}/>}
+        {isAuthenticated && <Route path="/orders" element = {<MyOrders/>}/>}
+        {isAuthenticated && <Route path="/order/:id" element = {<OrderDetails/>}/>}
         
         
-          { isAuthenticated && <Route path="/order/payment" element = {<Payment/>}/>}
+        { isAuthenticated && <Route path="/order/payment" element = {<Payment/>}/>}
         
 
 

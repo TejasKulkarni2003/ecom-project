@@ -5,34 +5,41 @@ const Order = require("../models/orderModel");
 
 // Creating Order
 exports.createOrder = asyncError( async(req, res, next)=>{
-    const {
-        totalPrice,
-        shippingPrice,
-        taxPrice,
-        shippingInfo,
-        orderItems,
-        // paidAt,
-        itemPrice,
-        paymentInfo,
-    } = req.body
+    try {
+        const {
+            totalPrice,
+            shippingPrice,
+            taxPrice,
+            shippingInfo,
+            orderItems,
+            // paidAt,
+            itemPrice,
+            paymentInfo,
+        } = req.body
 
-    const order = await Order.create({
-        totalPrice,
-        shippingPrice,
-        taxPrice,
-        shippingInfo,
-        orderItems,
-        // paidAt,
-        itemPrice,
-        paymentInfo,
-        user: req.user._id,
-        paidAt: Date.now(),
-    })
+        const order = await Order.create({
+            totalPrice,
+            shippingPrice,
+            taxPrice,
+            shippingInfo,
+            orderItems,
+            // paidAt,
+            itemPrice,
+            paymentInfo,
+            user: req.user._id,
+            paidAt: Date.now(),
+        })
 
-    res.status(201).json({
-        success: true,
-        order
-    })
+        res.status(201).json({
+            success: true,
+            order
+        })
+    } catch (error) {
+        res.status(201).json({
+            success: false,
+            error: error
+        })
+    }
 })
 
 

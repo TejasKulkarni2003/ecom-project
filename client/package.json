@@ -6,8 +6,10 @@
     "@chakra-ui/react": "^2.7.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@material-ui/data-grid": "^4.0.0-alpha.37",
     "@mui/material": "^5.13.7",
     "@mui/styled-engine-sc": "^5.12.0",
+    "@mui/x-data-grid": "^6.18.0",
     "@stripe/react-stripe-js": "^2.3.1",
     "@stripe/stripe-js": "^2.1.10",
     "@testing-library/jest-dom": "^5.16.5",
@@ -65,5 +67,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://192.168.175.103:5000"
+  "proxy": "http://10.70.47.153:5000"
 }

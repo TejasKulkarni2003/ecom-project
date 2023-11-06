@@ -92,7 +92,7 @@ const ProductDetails = () => {
                 <Input readOnly value={quantity} type='number' w={'4rem'} borderRadius={'0'} textAlign={'center'}></Input>
                 <Button borderRadius={'0 0.8rem 0.8rem 0'} fontSize= "1.2rem" onClick={increaseQuantity}>+</Button>
                 </HStack>
-                <Button fontSize= "0.7rem" padding="0.1rem 1rem" backgroundColor={'#635dc0'} onClick={addToCartHandler}>Add to Cart</Button>
+                <Button fontSize= "0.7rem" padding="0.1rem 1rem" backgroundColor={'#635dc0'} disabled={product.Stock < 1 ? true: false} onClick={addToCartHandler}>Add to Cart</Button>
             </HStack> 
             <p style={{lineHeight:'2rem', fontWeight: '800', borderBottom:'1px solid', borderTop:'1px solid', textAlign: 'center', margin:'0.8rem 0'}}>
                 Status:

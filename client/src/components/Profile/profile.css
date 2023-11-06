@@ -46,8 +46,9 @@
         align-items: center;
     }
     .details{
-        margin-left: 4rem;
-        align-items: start;
+        /* margin-left: 4rem; */
+        /* align-items: start; */
+        justify-content: center;
     }
 
     .details .t1{
@@ -57,8 +58,6 @@
         font-size: 1rem;
     }
 
-    .details .btn button{
-        width: 10rem;
-    }
+    
 
 }

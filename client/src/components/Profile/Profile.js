@@ -49,7 +49,7 @@ const Profile = () => {
                         </div>
                         
                         <div className='btn'>
-                        <Link to= "/profile/update">
+                        <Link to= "/orders">
                             <Button backgroundColor={'#635dc0'} marginTop={'1rem'} padding={'0.8rem'}>My Orders</Button>
                         </Link>
                         </div>
