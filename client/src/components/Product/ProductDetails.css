@@ -60,7 +60,9 @@
 
 @media screen and (max-width: 480px) {
     .carouselImages {
-      width: 15rem;
+      width: 10rem;
+      margin-left: auto;
+      margin-right: auto;
     }
     .productDetailsBox{
         padding: 0;
@@ -74,6 +76,18 @@
     
     .productDetailsBox h4{
         font-size: 0.8rem;
+    }
+    .product_stack{
+        padding: 3rem 2rem;
+    }
+
+    .reviewCard > p {
+        /* color: rgba(0, 0, 0, 0.836); */
+        font: 600 0.9rem "Roboto";
+    }
+    .reviewCardComment {
+        /* color: rgba(0, 0, 0, 0.445); */
+        font: 300 0.8rem cursive;
     }
 }
 
@@ -128,5 +142,17 @@
     
     .productDetailsBox h4{
         font-size: 0.8rem;
+    }
+
+    .reviewCard > img {
+        width: 5vmax;
+    }
+    .reviewCard > p {
+        /* color: rgba(0, 0, 0, 0.836); */
+        font: 600 0.9rem "Roboto";
+    }
+    .reviewCardComment {
+        /* color: rgba(0, 0, 0, 0.445); */
+        font: 300 0.8rem cursive;
     }
 }

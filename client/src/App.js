@@ -33,8 +33,8 @@ function App() {
   const [stripekey, setstripekey] = useState("")
 
   async function getStripeKey (){
-    const {data} = await axios.get("/api/v1/stripekey")
-    setstripekey(data.stripeKey)
+    // const {data} = await axios.get("/api/v1/stripekey")
+    // setstripekey(data.stripeKey)
   }
 
   useEffect(() => {
@@ -53,7 +53,7 @@ function App() {
     <Router>
       {isAuthenticated && <UserMenu user = {user}/>}
       <Header />
-      <Elements stripe = {loadStripe(stripekey)}>
+      <Elements stripe = {loadStripe("pk_test_51O6vXlSFASUyNS1Abwp7XvrCS4OF5MaVOLnVnbXkS1HUDnE2CHSDNiF12ovaUez8rFmuSt1HTWiNdLbfOq0jHyfM002bPk2Zs6")}>
       <Routes>
         
         <Route path="/" element = {<Home/>}/>

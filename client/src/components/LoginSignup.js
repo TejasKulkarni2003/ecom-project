@@ -124,7 +124,7 @@ const LoginSignup = () => {
         (
             <>
             <div className='container'>
-                <div className='box'>
+                <div className='box' style={{background: "rgba(18, 18, 33, 0.785)"}}>
                     <div>
                         <div className='switcher'>
                             <p onClick={(e) => switchForm(e, "login")}>Login</p>
