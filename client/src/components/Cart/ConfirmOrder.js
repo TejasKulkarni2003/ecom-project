@@ -85,7 +85,7 @@ const ConfirmOrder = () => {
 
             <div>
                 <div className="orderSummary">
-                    <h2>Order Summery</h2>
+                    <h2>Order Summary</h2>
                     <div>
                     <div>
                         <p>Subtotal:</p>

@@ -39,7 +39,7 @@ const LoginSignup = () => {
 
     useEffect(() => {
         if(error){
-            console.log(error);
+            // console.log(error);
             const err = error;
             dispatch(clearErrors());
             toast.error(err, {

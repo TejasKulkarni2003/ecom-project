@@ -16,6 +16,7 @@ import {
     HStack,
     Input
   } from '@chakra-ui/react';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
 
@@ -23,6 +24,7 @@ const Header = () => {
 
     const [keyword, setKeyword] = useState("");
     const {isOpen, onClose, onOpen} = useDisclosure();
+    const {isAuthenticated} = useSelector((state)=>state.user) 
     
     const searchHandler = (e) => {
         e.preventDefault();
@@ -46,7 +48,7 @@ const Header = () => {
             <DrawerOverlay/>
             <DrawerContent>
                 <DrawerCloseButton/>
-                <DrawerHeader>Shoppinger</DrawerHeader>
+                <DrawerHeader>SoleKikZ</DrawerHeader>
 
                 <DrawerBody>
                     <VStack alignItems={'flex-start'}>
@@ -73,7 +75,7 @@ const Header = () => {
 
                     <HStack pos={'absolute'} bottom={'10'} left={'0'} justifyContent={'space-evenly'} w = {'full'}>
                         <Button onClick={onClose} colorScheme={'purple'}>
-                            <Link to={'/login'}>My Profile</Link>
+                            <Link to={'/login'}>{isAuthenticated ? "My Profile": "Login"}</Link>
                         </Button>
 
                         <Button onClick={onClose} colorScheme={'purple'} variant={'outline'}>

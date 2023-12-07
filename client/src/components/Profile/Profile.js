@@ -47,6 +47,10 @@ const Profile = () => {
                             <Heading className='t1'>Email</Heading>
                             <Heading className='t2'>{user.email}</Heading>
                         </div>
+                        <div>
+                            <Heading className='t1'>Mobile</Heading>
+                            <Heading className='t2'>8830518471</Heading>
+                        </div>
                         
                         <div className='btn'>
                         <Link to= "/orders">

@@ -86,7 +86,7 @@ const OrderDetails = () => {
                         <div>
                             <div>
                                 <p>Shipment Status: ₹{order.totalPrice}</p>
-                                <span className={`${order.orderStatus === "Delivered" ? "Delivered" : "Processing"}`}>{order.orderStatus}</span>
+                                <span className={`${order.orderStatus === "delivered" ? "Delivered" : "Processing"}`}>{order.orderStatus}</span>
                             </div>
                         </div>
 

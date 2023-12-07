@@ -31,8 +31,8 @@ const UserMenu = ({user}) => {
         navigate("/profile")
     }
 
-    function logOut() {
-        dispatch(logout());
+    async function logOut() {
+        await dispatch(logout());
         navigate("/");
         // return (
         toast.success("Logout Done", {

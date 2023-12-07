@@ -151,18 +151,17 @@ const ProductDetails = () => {
         <>
         <Stack direction={['column', 'row']} className='product_stack'>
         <Box>
-            <Carousel className='carouselImages' showThumbs={false} showIndicators={false} showArrows={false} showStatus={false}>
+            <Carousel className='CarouselImages' showThumbs={false} showIndicators={false} showArrows={false} showStatus={false}>
                 {product.images &&
-                    product.images.map((item, i) => (
-                        <img
-                        className="CarouselImage"
-                        key={i}
-                        src={item.url}
-                        alt={`${i} Slide`}
-                        />
-                    ))}
-
-            </Carousel>
+                  product.images.map((item, i) => (
+                    <img
+                      className="CarouselImage"
+                      key={i}
+                      src={item.url}
+                      alt={`${i} Slide`}
+                    />
+                  ))}
+              </Carousel>
         </Box>
         <Box className='productDetailsBox'>
             <Heading >{product.name}</Heading>
@@ -185,9 +184,12 @@ const ProductDetails = () => {
                 {product.Stock < 1 ? " OutOfStock" : " InStock"}
                 </b>
             </p>
-            
+            <p >{`Brand : ${product.category}`}</p>
             <p >{`Description : ${product.description}`}</p>
-            <Button fontSize= "0.7rem" padding="0.1rem 1rem" backgroundColor={'#635dc0'} top={'1rem'} onClick={onOpen}>Submit Reviews</Button>
+            <div className='btns'>
+              <Button fontSize= "0.7rem" padding="0.1rem 1rem" backgroundColor={'#635dc0'} top={'1rem'} onClick={onOpen}>Submit Reviews</Button>
+              <Button fontSize= "0.7rem" padding="0.1rem 1rem" backgroundColor={'#635dc0'} top={'1rem'} onClick={onOpen}>Delete Product</Button>
+            </div>
             <Modal
               initialFocusRef={initialRef}
               finalFocusRef={finalRef}

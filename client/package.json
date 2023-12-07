@@ -7,7 +7,6 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@material-ui/data-grid": "^4.0.0-alpha.37",
-    "@mui/material": "^5.14.16",
     "@mui/styled-engine-sc": "^6.0.0-alpha.4",
     "@mui/x-data-grid": "^6.18.0",
     "@stripe/react-stripe-js": "^2.3.1",
@@ -67,5 +66,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://10.70.47.153:5000"
+  "proxy": "http://10.70.44.129:5000"
 }

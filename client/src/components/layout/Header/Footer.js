@@ -8,7 +8,7 @@ const Footer = () => {
     <>
     <footer id="footer">
       <div className="leftFooter">
-        <h1>SHOPPINGER</h1>
+        <h1>SoleKikZ</h1>
         <h4>DOWNLOAD OUR APP</h4>
         <div className="imgs">
         <img src={playStore} alt="playstore" />
@@ -26,18 +26,18 @@ const Footer = () => {
       <div className="rightFooter">
         <h4>Follow Us</h4>
         <div>
-            <a href="http://instagram.com/meabhisingh">Instagram</a>
+            <a href="http://instagram.com/">Instagram</a>
         </div>
         <div>
-            <a href="http://youtube.com/6packprogramemr">Youtube</a>
+            <a href="http://youtube.com/">Youtube</a>
         </div>
         <div>
-            <a href="http://instagram.com/meabhisingh">Facebook</a>
+            <a href="http://instagram.com/">Facebook</a>
         </div>
       </div>
     </footer>
 
-    <div className="end">Copyrights @TejasKulkarni2003</div>
+    {/* <div className="end">Copyrights @TejasKulkarni2003</div> */}
     </>
   );
 };

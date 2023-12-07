@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ChakraProvider>
     <Provider store = {store}>
-      <ColorModeSwitcher zIndex={'10'}/>
+    <ColorModeSwitcher zIndex={'10'}/>
       <App />
     </Provider>
   </ChakraProvider>

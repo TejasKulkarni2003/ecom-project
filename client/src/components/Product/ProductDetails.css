@@ -22,6 +22,12 @@
     overflow: auto;
 }
 
+.btns{
+    display: flex;
+    gap: 1rem;
+}
+
+
 .reviewCard {
     flex: none;
     box-shadow: 0 0 5px #635dc0;

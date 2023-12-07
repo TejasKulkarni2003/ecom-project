@@ -33,7 +33,7 @@ const Home = () => {
     <>
         {loading? (<div className='loader'></div>):(
             <>
-                <MetaData title="Home Page"/>
+                <MetaData title="SoleKikZ"/>
                 <div className='banner'>
                     <p>Welcome to  
 
@@ -41,7 +41,7 @@ const Home = () => {
                     preRenderFirstString={true}
                     sequence={[
                     500,
-                    '  Shoppinger', // initially rendered starting point
+                    '  SoleKikZ', // initially rendered starting point
                     2000,
                     ' ',
                     500,
@@ -51,7 +51,7 @@ const Home = () => {
                     repeat={Infinity}
                     />
                     </p>
-                    <h1>Find What you Need</h1>
+                    <h1>Find the Shoe you Need</h1>
 
                     <a href='#container'>
                         <button>

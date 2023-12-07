@@ -115,7 +115,7 @@ exports.deleteOrder = asyncError( async(req, res, next) => {
 //Update Status  --ADMIN
 exports.updateOrder = asyncError( async(req, res, next) => {
     const order = await Order.findById(req.params.id)
-    
+    // console.log(req.body.status)
     if(!order){
         return next(new ErrorHandler("No order Found", 404))
     }
@@ -127,7 +127,7 @@ exports.updateOrder = asyncError( async(req, res, next) => {
     order.orderItems.forEach(async (item)=> {await updateStock(item.product, item.quantity)})
 
     order.orderStatus = req.body.status;
-
+    
     if(req.body.status === "delivered"){
         order.deliveredAt = Date.now();
     }

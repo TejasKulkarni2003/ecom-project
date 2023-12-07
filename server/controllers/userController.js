@@ -8,23 +8,31 @@ const cloudinary = require("cloudinary");
 //Registration
 
 exports.registerUser = asyncError(async(req, res, next) => {
-    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-        folder: "avatar",
-        width: 150,
-        crop: "scale",
-    });
-
-    const {name, email, password} = req.body;
-
-    const user = await User.create({
-        name, email, password,
-        avatar:{
-            public_id: myCloud.public_id,
-            url: myCloud.secure_url,
+    try {
+        if(req.body.avatar === ""){
+            return next(new ErrorHandler("Add a photo", 401));
         }
-    })
-
-    sendToken(user, 201, res);
+        const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+            folder: "avatar",
+            width: 150,
+            crop: "scale",
+        });
+    
+        const {name, email, password} = req.body;
+    
+        const user = await User.create({
+            name, email, password,
+            avatar:{
+                public_id: myCloud.public_id,
+                url: myCloud.secure_url,
+            }
+        })
+    
+        sendToken(user, 201, res);
+    } catch (error) {
+        return next(new ErrorHandler(error.message, 501));
+    }
+    
 });
 
 // LOGIN
@@ -265,7 +273,7 @@ exports.deleteUser = asyncError( async(req, res, next) =>{
 
     res.status(200).json({
         success: true,
-        message: "suer deleted successfully"
+        message: "User Deleted Successfully"
     })
 
 })

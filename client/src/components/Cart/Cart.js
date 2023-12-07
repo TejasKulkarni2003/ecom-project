@@ -2,7 +2,7 @@ import React from 'react'
 import "./Cart.css"
 import CartItem from "./CartItem.js"
 import {  useSelector } from 'react-redux'
-import { Button } from '@chakra-ui/react'
+import { Button, Heading } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
@@ -15,6 +15,7 @@ const Cart = () => {
 
   return (
     <>
+        <Heading>Cart</Heading>
         <div className='cartPage'>
         {console.log(cartItems)}
         {   
