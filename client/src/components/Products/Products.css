@@ -66,9 +66,19 @@
     box-shadow: 0 1rem 5rem rgba(255, 255, 255, 0.26);
     transform: translateY(-2rem);
     /* transform: scale(1.2); */
-  }
+}
 
-  .page{
+.page{
     display: flex;
     justify-content: center;
-  }
+}
+
+.filters{
+    position: fixed;
+    width: 8vw;
+    top: 10vh;
+    background: #635dc0;
+}
+.categoryBox{
+    text-align: center;
+}

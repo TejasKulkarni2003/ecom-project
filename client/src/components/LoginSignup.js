@@ -22,14 +22,14 @@ const LoginSignup = () => {
         name: "",
         email: "",
         password: "",
-
+        mobile: "",
     })
     const [avatar, setavatar] = useState("");
     const [avatarPreview, setavatarPreview] = useState("/profile.png");
     const [isActive1, setisActive1] = useState(true);
     const [isActive2, setisActive2] = useState(false);
 
-    const {name, email, password} = user;
+    const {name, email, password, mobile} = user;
     const redirect = location.search ? location.search.split("=")[1] : "profile"
 
     const loginSubmit = (e) => {
@@ -95,6 +95,7 @@ const LoginSignup = () => {
         myData.set("email", email);
         myData.set("password", password);
         myData.set("avatar", avatar);
+        myData.set("mobile", mobile);
 
         dispatch(register(myData));
     }
@@ -124,7 +125,7 @@ const LoginSignup = () => {
         (
             <>
             <div className='container'>
-                <div className='box' style={{background: "rgba(18, 18, 33, 0.785)"}}>
+                <div className='boxx' style={{background: "rgba(18, 18, 33, 0.785)"}}>
                     <div>
                         <div className='switcher'>
                             <p onClick={(e) => switchForm(e, "login")}>Login</p>
@@ -156,7 +157,6 @@ const LoginSignup = () => {
                                 />
                             </div>
 
-                            <Link to="/password/forget">Forget Password ?</Link>
                             <input type="submit" value="login" className='loginBtn' />
                         </form>
 
@@ -195,6 +195,17 @@ const LoginSignup = () => {
                                     required
                                     name = "password"
                                     value = {password}
+                                    onChange={registerDataChange}
+                                />
+                            </div>
+                            <div className='signUpPassword'>
+                                <KeyRound className='svg' />
+                                <input
+                                    type={'number'}
+                                    placeholder="Mobile"
+                                    required
+                                    name = "mobile"
+                                    value = {mobile}
                                     onChange={registerDataChange}
                                 />
                             </div>

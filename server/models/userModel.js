@@ -22,6 +22,12 @@ const userSchema = new mongoose.Schema({
         minLength: [8, "Name must exceed 4 charecters"],
         select: false             //this will not found in "model.find({})"
     },
+    mobile: {
+        type: String,
+        required: [true, "Please Enter Mobile Number"],
+        minLength: [10, "Mobile must be 10 digits"],
+        maxLength: [10, "Mobile must be 10 digits"],
+    },
     avatar:{
         public_id:{
             type:String,

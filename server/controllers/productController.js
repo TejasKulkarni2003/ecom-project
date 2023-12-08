@@ -7,6 +7,10 @@ const cloudinary = require("cloudinary")
 exports.createProduct = asyncError(async (req, res, next)=>{
     let images = [];
 
+    // if(!req.body.images){
+    //     return next(new ErrorHandler("Image is cumpulsary", 401))
+    // }
+
     if (typeof req.body.images === "string") {
         images.push(req.body.images);
     } else {
@@ -14,6 +18,8 @@ exports.createProduct = asyncError(async (req, res, next)=>{
     }
 
     const imagesLinks = [];
+
+    
 
     for (let i = 0; i < images.length; i++) {
         const result = await cloudinary.v2.uploader.upload(images[i], {

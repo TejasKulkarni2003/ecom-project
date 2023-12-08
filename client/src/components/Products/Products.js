@@ -28,7 +28,7 @@ const Products = () => {
     const {products, loading, error,  resultPerPage, filteredProducts} = useSelector((state)=>state.products)
     const [currentPage, setCurrentPage] = useState(1);
     const [min, setPriceMin] = useState(0);
-    const [max, setPriceMax] = useState(50000);
+    const [max, setPriceMax] = useState(10000);
     const {keyword} = useParams(); 
     // console.log(keyword);
 
@@ -43,7 +43,7 @@ const Products = () => {
     const [showTooltip, setShowTooltip] = useState(false);
     const [showTooltip2, setShowTooltip2] = useState(false);
 
-    const categories = ["laptop", "fashion", "Mobile", "camera"];
+    const categories = ["Other", "Nike", "Adidas", "HRX", "Puma", "Campus"];
     const nextPage = (e) => {
         setCurrentPage((currentPage+1));
     };
@@ -102,7 +102,8 @@ const Products = () => {
                     
                 </HStack>
                 
-                <RangeSlider defaultValue={[min, max]} min={0} max={100000} step={500} onChangeEnd={range}
+                <div className='filters'>
+                <RangeSlider defaultValue={[min, max]} min={0} max={10000} step={500} onChangeEnd={range}
                     onMouseEnter={() => setShowTooltip(true)}
                     onMouseLeave={() => setShowTooltip(false)}
                 >
@@ -133,7 +134,7 @@ const Products = () => {
                 </RangeSlider>
 
 
-                <Heading>Categories</Heading>
+                <h3 style={{"fontSize": "1rem", "textDecoration": "underline"}}>Categories</h3>
                 <ul className='categoryBox'>{
                     categories.map((category) => (
                         <li className='category-link' key={category} onClick={()=>setCategory(category)}>
@@ -165,6 +166,7 @@ const Products = () => {
                 <SliderThumb boxSize={6} />
                 </Slider>
                 {/* </Box> */}
+                </div>
               
             </>
         )}

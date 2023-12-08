@@ -86,11 +86,11 @@ const AdminUsers = () => {
         
         <TableContainer className='tblCont' style={{width: "100%"}}>
             <Table variant='simple' style ={style} >
-            <TableCaption><h2>Orders</h2></TableCaption>
+            <TableCaption><h2>Users</h2></TableCaption>
                 <Thead>
                 <Tr className="row">
-                    <Th>Orders</Th>
-                    <Th>Status</Th>
+                    <Th>User</Th>
+                    <Th>Name</Th>
                     <Th >Actions</Th>
                 </Tr>
                 </Thead>
@@ -99,7 +99,7 @@ const AdminUsers = () => {
                 {users && 
                     users.map((item, index) => (
                   <Tr>
-                    <Td ><Link to={`/order/${item._id}`}>{item._id}</Link></Td>
+                    <Td >{item._id}</Td>
                     <Td >{item.name}</Td>
                     <Td className='actions'> <button onClick={() => deleteHandler(item._id)}><Trash2/></button></Td>
                   </Tr>

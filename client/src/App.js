@@ -22,6 +22,7 @@ import ProductCreate from "./components/Admin/ProductCreate.js"
 import UpdateProduct from "./components/Admin/UpdateProduct.js"
 import AdminOrders from "./components/Admin/AdminOrders.js"
 import AdminUsers from "./components/Admin/AdminUsers.js"
+import UserProfile from "./components/Admin/UserProfile.js"
 import UpdateProfile from "./components/Profile/UpdateProfile.js"
 import UpdatePassword from "./components/Profile/UpdatePassword.js"
 import Cart from './components/Cart/Cart.js';
@@ -65,7 +66,7 @@ function App() {
         <Route path="/" element = {<Home/>}/>
         <Route path="/product/:id" element = {<ProductDetails/>}/>
         <Route path="/products" element = {<Products/>}/>
-        <Route exact path="/cart" element = {<Cart/>}/>
+        <Route exact path="/cart" element = {isAuthenticated ? <Cart/>: <LoginSignup/>}/>
         <Route exact path="/login" element = {<LoginSignup/>}/>
         <Route path="/products/:keyword" element = {<Products/>}/>
         {isAuthenticated && <Route path="/profile" element = {<Profile/>}/>}
@@ -82,6 +83,7 @@ function App() {
         {isAuthenticated &&  user.role === 'admin'  && <Route path="/Admin/product/:id" element = {<UpdateProduct/>}/>}
         {isAuthenticated &&  user.role === 'admin'  && <Route path="/Admin/orders" element = {<AdminOrders/>}/>}
         {isAuthenticated &&  user.role === 'admin'  && <Route path="/Admin/users" element = {<AdminUsers/>}/>}
+        {/* {isAuthenticated &&  user.role === 'admin'  && <Route path="/Admin/user/:id" element = {<UserProfile/>}/>} */}
         
         
         { isAuthenticated && <Route path="/order/payment" element = {<Payment/>}/>}

@@ -15,6 +15,7 @@ const UpdateProfile = () => {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const [mobile, setMobile] = useState("");
     
     const [avatar, setavatar] = useState("");
     const [avatarPreview, setavatarPreview] = useState("/profile.png");
@@ -25,6 +26,7 @@ const UpdateProfile = () => {
             setName(user.name);
             setEmail(user.email);
             setavatarPreview(user.avatar.url);
+            setMobile(user.mobile);
         }
 
         if(error){
@@ -70,6 +72,7 @@ const UpdateProfile = () => {
         myData.set("name", name);
         myData.set("email", email);
         myData.set("avatar", avatar);
+        myData.set("mobile", mobile);
 
         dispatch(updateProfile(myData));
     }
@@ -118,6 +121,19 @@ const UpdateProfile = () => {
                             name = "email"
                             value = {email}
                             onChange={(e)=>setEmail(e.target.value)}
+
+                        />
+                    </div>
+
+                    <div className='updateProfileEmail'>
+                        <Mail className='svg' />
+                        <input
+                            type={'number'}
+                            placeholder="Mobile"
+                            required
+                            name = "mobile"
+                            value = {mobile}
+                            onChange={(e)=>setMobile(e.target.value)}
 
                         />
                     </div>

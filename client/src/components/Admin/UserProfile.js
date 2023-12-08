@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import "./profile.css"
+import "../Profile/profile.css"
 import { useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
 import {Box, Button, Heading, Image} from "@chakra-ui/react"
 
-const Profile = () => {
+const UserProfile = () => {
     const navigate = useNavigate();
     const {user, loading, isAuthenticated} = useSelector((state) => state.user);
     // console.log(user);
@@ -24,7 +24,7 @@ const Profile = () => {
 
                     <Box className='photo'>
                         <div>
-                        <Heading fontSize={'1.2rem'}>My Profile</Heading>
+                        <Heading fontSize={'1.2rem'}>My UserProfile</Heading>
                         </div>
                         <div className='ph'>
                         <Image 
@@ -72,4 +72,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default UserProfile

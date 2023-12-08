@@ -166,7 +166,7 @@ const ProductDetails = () => {
         <Box className='productDetailsBox'>
             <Heading >{product.name}</Heading>
             <h4>{`Product- #${id}`}</h4>
-            <h1>{`$${product.price}`}</h1>
+            <h1>{`₹${product.price}`}</h1>
             <Box>
                 <ReactStars {...options}/> <span style={{lineHeight: '0px'}}>{product.numOfReviews} Reviews</span>
             </Box>
@@ -188,7 +188,7 @@ const ProductDetails = () => {
             <p >{`Description : ${product.description}`}</p>
             <div className='btns'>
               <Button fontSize= "0.7rem" padding="0.1rem 1rem" backgroundColor={'#635dc0'} top={'1rem'} onClick={onOpen}>Submit Reviews</Button>
-              <Button fontSize= "0.7rem" padding="0.1rem 1rem" backgroundColor={'#635dc0'} top={'1rem'} onClick={onOpen}>Delete Product</Button>
+              {/* <Button fontSize= "0.7rem" padding="0.1rem 1rem" backgroundColor={'#635dc0'} top={'1rem'} onClick={onOpen}>Delete Product</Button> */}
             </div>
             <Modal
               initialFocusRef={initialRef}
